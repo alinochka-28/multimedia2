@@ -1,13 +1,13 @@
+// === visualization.js ===
+let audioContext;
 let analyzer;
 let fft;
-let audioContext;
-let source;
-let audioElement;
 
 function startAudioVisualization() {
     if (!audioContext) {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        source = audioContext.createMediaElementSource(audioElement);
+        let audioElement = document.getElementById('audio-element');
+        let source = audioContext.createMediaElementSource(audioElement);
         analyzer = audioContext.createAnalyser();
         fft = new p5.FFT();
         
@@ -16,14 +16,14 @@ function startAudioVisualization() {
         fft.setInput(source);
     }
 }
+
 document.getElementById("play-pause-button").addEventListener("click", startAudioVisualization);
 
 function setup() {
     let canvas = createCanvas(windowWidth, 200);
-    canvas.parent("visualization-container"); // Привязка к контейнеру
+    canvas.parent("visualization-container"); 
     noFill();
 }
-
 
 function draw() {
     background(0); 
