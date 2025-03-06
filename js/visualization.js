@@ -1,4 +1,3 @@
-// === visualization.js ===
 let audioContext;
 let analyzer;
 let fft;
